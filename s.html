@@ -1,0 +1,47 @@
+<html>
+<head>
+
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<style type="text/css">
+	#comments{display: none;}
+
+	.green{background-color: green;}
+</style>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#price").on("keyup","#quantity",function(){
+			var quan=+$(this).val();
+			var piece=+$("#piece").text();
+			var total=quan*piece;
+			//$("#total").text()=total;
+			$("#total").text(total+"");
+		});	
+		$("#show").on("click",function(event){
+			event.preventDefault();
+			$("#comments").fadeToggle();
+
+		});
+		$("#price").on("click",function(){
+			$(this).toggleClass('green');
+
+		});
+	}); 
+
+</script>
+</head>
+<body>
+	<div id="price">
+		<p id="piece">50</p><br/>
+		<input type="text" id="quantity"  />
+		<p id="total"></p>
+
+		<a href="#" id="show">show comments</a>
+		<ul id="comments">
+			<li> 恩，用着还不错</li>
+			<li> 店主还挺良心的</li>
+			<li>店主的赠品非常的不错</li>
+			<li>恩，就是快递有点慢</li>
+		</ul>
+	</div>
+</body> 
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>NO_TITLE</title>
+<style type="text/css">
+	div{width: 100px;height: 30px;margin: 20px;float: left;background:red;opacity: 0.3;}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+	var aDiv=document.getElementsByTagName('div');
+	for (var i = 0; i< aDiv.length; i++) {
+		aDiv[i].alpha=30;
+		aDiv[i].onmouseover=function(){
+			startMove(this,100);
+		}
+		aDiv[i].onmouseout=function(){  
+			startMove(this,30);                       
+        }  
+	};
+
+	function startMove (obj,iTarget) {
+
+	clearInterval(obj.timer);
+	obj.timer=setInterval(function(){
+		var speed=(iTarget-obj.alpha)/5;
+		if(obj.alpha==iTarget){
+			clearInterval(obj.timer);
+		}else{
+			obj.alpha+=speed;
+			obj.style.opacity=obj.alpha/100;
+		}
+	},30);
+}
+};
+
+</script>
+
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
